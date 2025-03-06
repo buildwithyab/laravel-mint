@@ -16,8 +16,8 @@
         }
     ],
     "require": {
-        "php": "^8.2|^8.3",
-        "illuminate/support": "^9|^10|^11",
+        "php": "^8.2|^8.3|^8.4",
+        "illuminate/support": "^9|^10|^11|^12",
         "laravel/legacy-factories": "^1.0"
     },
     "require-dev": {
