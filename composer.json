@@ -1,8 +1,8 @@
 {
-    "name": "yabhq/laravel-mint",
+    "name": "buildwithyab/laravel-mint",
     "description": "A collection of traits, macros and other helpers to keep your Laravel app feeling fresh.",
     "keywords": ["yab", "yabhq", "laravel", "mint", "macros", "traits", "helpers"],
-    "homepage": "https://github.com/yabhq/laravel-mint",
+    "homepage": "https://github.com/buildwithyab/laravel-mint",
     "license": "MIT",
     "type": "library",
     "authors": [
