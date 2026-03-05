@@ -1,7 +1,15 @@
 {
     "name": "buildwithyab/laravel-mint",
     "description": "A collection of traits, macros and other helpers to keep your Laravel app feeling fresh.",
-    "keywords": ["yab", "yabhq", "laravel", "mint", "macros", "traits", "helpers"],
+    "keywords": [
+        "yab",
+        "yabhq",
+        "laravel",
+        "mint",
+        "macros",
+        "traits",
+        "helpers"
+    ],
     "homepage": "https://github.com/buildwithyab/laravel-mint",
     "license": "MIT",
     "type": "library",
@@ -17,12 +25,12 @@
     ],
     "require": {
         "php": "^8.2|^8.3|^8.4",
-        "illuminate/support": "^9|^10|^11|^12",
+        "illuminate/support": "^9|^10|^11|^12|^13.0",
         "laravel/legacy-factories": "^1.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^9.0",
-        "phpunit/phpunit": "^10.0"
+        "orchestra/testbench": "^9.0|^11.0",
+        "phpunit/phpunit": "^10.0|^12.5.12"
     },
     "autoload": {
         "psr-4": {
@@ -39,7 +47,6 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true
