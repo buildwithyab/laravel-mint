@@ -13,7 +13,7 @@ trait Archivable
      */
     public static function bootArchivable()
     {
-        static::addGlobalScope(new ArchivableScope);
+        static::whenBooted(fn () => static::addGlobalScope(new ArchivableScope));
     }
 
     /**

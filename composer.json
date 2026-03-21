@@ -1,54 +1,60 @@
 {
-    "name": "buildwithyab/laravel-mint",
-    "description": "A collection of traits, macros and other helpers to keep your Laravel app feeling fresh.",
-    "keywords": ["yab", "yabhq", "laravel", "mint", "macros", "traits", "helpers"],
-    "homepage": "https://github.com/buildwithyab/laravel-mint",
-    "license": "MIT",
-    "type": "library",
-    "authors": [
-        {
-            "name": "Jim",
-            "email": "jimhlad@gmail.com"
-        },
-        {
-            "name": "Chris",
-            "email": "chris@chrisblackwell.me"
-        }
-    ],
-    "require": {
-        "php": "^8.2|^8.3|^8.4",
-        "illuminate/support": "^9|^10|^11|^12",
-        "laravel/legacy-factories": "^1.0"
+  "name": "buildwithyab/laravel-mint",
+  "description": "A collection of traits, macros and other helpers to keep your Laravel app feeling fresh.",
+  "keywords": [
+    "yab",
+    "buildwithyab",
+    "laravel",
+    "mint",
+    "macros",
+    "traits",
+    "helpers"
+  ],
+  "homepage": "https://github.com/buildwithyab/laravel-mint",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Jim",
+      "email": "jimhlad@gmail.com"
     },
-    "require-dev": {
-        "orchestra/testbench": "^9.0",
-        "phpunit/phpunit": "^10.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Yab\\Mint\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Yab\\Mint\\Tests\\": "tests"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Yab\\Mint\\MintServiceProvider"
-            ]
-        }
+    {
+      "name": "Chris",
+      "email": "chris@chrisblackwell.me"
     }
+  ],
+  "require": {
+    "php": "^8.3",
+    "illuminate/support": "^10|^11|^12|^13"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^11.0",
+    "phpunit/phpunit": "^12.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Yab\\Mint\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Yab\\Mint\\Tests\\": "tests"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Yab\\Mint\\MintServiceProvider"
+      ]
+    }
+  }
 }

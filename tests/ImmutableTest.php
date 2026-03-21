@@ -2,13 +2,14 @@
 
 namespace Yab\Mint\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Yab\Mint\Tests\TestCase;
 use Yab\Mint\Tests\Models\ImmutableModel;
 use Yab\Mint\Exceptions\ImmutableDataException;
 
 class ImmutableTest extends TestCase
 {
-	/** @test */
+	#[Test]
     public function an_immutable_model_can_be_created()
     {
     	$model = ImmutableModel::create();
@@ -18,7 +19,7 @@ class ImmutableTest extends TestCase
 		]);
     }
 
-	/** @test */
+	#[Test]
     public function an_immutable_model_cannot_be_updated()
     {
     	$model = ImmutableModel::create();
@@ -30,7 +31,7 @@ class ImmutableTest extends TestCase
 		]);
     }
 
-	/** @test */
+	#[Test]
     public function an_immutable_model_cannot_be_deleted()
     {
     	$model = ImmutableModel::create();

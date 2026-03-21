@@ -1,4 +1,4 @@
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/yabhq/laravel-mint.svg?style=flat-square)](https://packagist.org/packages/yabhq/laravel-mint)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/buildwithyab/laravel-mint.svg?style=flat-square)](https://packagist.org/packages/buildwithyab/laravel-mint)
 
 # Mint for Laravel
 
@@ -7,7 +7,7 @@ A collection of traits, macros and other helpers to keep your Laravel app feelin
 ### Installation
 
 ```
-composer require yabhq/laravel-mint
+composer require buildwithyab/laravel-mint
 ```
 
 ### Archivable
@@ -62,28 +62,6 @@ You can also customize the conditions under which a model is immutable by overri
 public function isImmutable()
 {
     return $this->status === 'closed';
-}
-```
-
-### UUID Models
-
-Easily use UUIDs for your model's primary key by leveraging the UuidModel trait:
-
-```php
-use Yab\Mint\Traits\UuidModel;
-
-class Example extends Model
-{
-    use UuidModel;
-}
-```
-
-If you would like to customize the name of the UUID column, simply add the getUuidColumnName function in your model class:
-
-```php
-public static function getUuidColumnName(): string
-{
-    return 'my_column_name';
 }
 ```
 

@@ -2,15 +2,16 @@
 
 namespace Yab\Mint\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Yab\Mint\Tests\TestCase;
 use Yab\Mint\Tests\Models\ArchivableModel;
 
 class ArchivableTest extends TestCase
 {
-	/** @test */
+	#[Test]
     public function a_model_can_be_archived()
     {
-    	$model = factory(ArchivableModel::class)->create();
+    	$model = ArchivableModel::factory()->create();
 
         $this->assertDatabaseHas('archivable_models', [
             'id' => $model->id,
@@ -29,10 +30,10 @@ class ArchivableTest extends TestCase
         $this->assertEquals(now()->toDateTimeString(), $model->archived_at);
     }
 
-	/** @test */
+	#[Test]
     public function archived_models_are_excluded_via_global_scope()
     {
-    	$archived = factory(ArchivableModel::class)->state('archived')->create();
+    	$archived = ArchivableModel::factory()->archived()->create();
 
         $this->assertDatabaseHas('archivable_models', [
             'id' => $archived->id,
@@ -42,10 +43,10 @@ class ArchivableTest extends TestCase
         $this->assertEquals(0, ArchivableModel::count());
     }
 
-	/** @test */
+	#[Test]
     public function archived_models_can_be_retrieved_via_the_with_archived_scope()
     {
-    	$archived = factory(ArchivableModel::class)->state('archived')->create();
+    	$archived = ArchivableModel::factory()->archived()->create();
 
         $this->assertDatabaseHas('archivable_models', [
             'id' => $archived->id,
@@ -55,10 +56,10 @@ class ArchivableTest extends TestCase
         $this->assertEquals(1, ArchivableModel::withArchived()->count());
     }
 
-    /** @test */
+    #[Test]
     public function a_model_can_be_unarchived()
     {
-    	$model = factory(ArchivableModel::class)->state('archived')->create();
+    	$model = ArchivableModel::factory()->archived()->create();
 
         $this->assertDatabaseHas('archivable_models', [
             'id' => $model->id,

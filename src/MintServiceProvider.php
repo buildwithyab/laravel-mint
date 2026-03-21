@@ -3,8 +3,6 @@
 namespace Yab\Mint;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\FactoryBuilder;
-use Yab\Mint\Macros\FactoryBuilder as FactoryBuilderMacros;
 
 class MintServiceProvider extends ServiceProvider
 {
@@ -13,8 +11,6 @@ class MintServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        FactoryBuilder::mixin(new FactoryBuilderMacros);
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/Stubs' => base_path('stubs'),

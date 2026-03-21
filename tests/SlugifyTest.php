@@ -2,15 +2,16 @@
 
 namespace Yab\Mint\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Yab\Mint\Tests\TestCase;
 use Yab\Mint\Tests\Models\SlugModel;
 
 class SlugifyTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function a_newly_created_model_has_a_slug_automatically_computed()
     {
-        $model = factory(SlugModel::class)->create([
+        $model = SlugModel::factory()->create([
             'name' => 'Slugify Me'
         ]);
 
@@ -21,14 +22,14 @@ class SlugifyTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function duplicate_slugs_are_handled_gracefully()
     {
-        $model = factory(SlugModel::class)->create([
+        $model = SlugModel::factory()->create([
             'name' => 'Sample Name'
         ]);
 
-        $modelSameName = factory(SlugModel::class)->create([
+        $modelSameName = SlugModel::factory()->create([
             'name' => 'Sample Name'
         ]);
 

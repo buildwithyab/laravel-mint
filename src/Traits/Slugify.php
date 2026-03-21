@@ -9,17 +9,19 @@ trait Slugify
 {
     public static function bootSlugify()
     {
-        static::creating(function ($model) {
-            if (is_null($model->slug)) {
-                $model->slug = Str::slug($model->{self::getSlugKeyName()});
-            }
-            $model->slug = self::checkModelSlug($model->slug);
-        });
-
-        static::updating(function ($model) {
-            if ($model->getOriginal('slug') !== $model->slug) {
+        static::whenBooted(function () {
+            static::creating(function ($model) {
+                if (is_null($model->slug)) {
+                    $model->slug = Str::slug($model->{self::getSlugKeyName()});
+                }
                 $model->slug = self::checkModelSlug($model->slug);
-            }
+            });
+
+            static::updating(function ($model) {
+                if ($model->getOriginal('slug') !== $model->slug) {
+                    $model->slug = self::checkModelSlug($model->slug);
+                }
+            });
         });
     }
 

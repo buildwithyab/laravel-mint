@@ -2,13 +2,14 @@
 
 namespace Yab\Mint\Tests\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Yab\Mint\Traits\SavesQuietly;
 use Yab\Mint\Tests\Events\EventfulModelSaved;
+use Yab\Mint\Tests\Factories\EventfulModelFactory;
 
 class EventfulModel extends Model
 {
-	use SavesQuietly;
+	use HasFactory;
 
 	protected $dispatchesEvents = [
 		'saved' => EventfulModelSaved::class,
@@ -18,8 +19,13 @@ class EventfulModel extends Model
 	{
 		parent::boot();
 
-		self::created(function($model) {
+		static::whenBooted(fn () => static::created(function($model) {
 			$model->is_created_event = true;
-		});
+		}));
+	}
+
+	protected static function newFactory()
+	{
+		return EventfulModelFactory::new();
 	}
 }

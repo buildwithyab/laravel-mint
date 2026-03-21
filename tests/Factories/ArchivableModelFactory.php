@@ -2,16 +2,24 @@
 
 namespace Yab\Mint\Tests\Factories;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Yab\Mint\Tests\Models\ArchivableModel;
 
-$factory->define(ArchivableModel::class, function () {
-    return [
-        'archived_at' => null,
-    ];
-});
+class ArchivableModelFactory extends Factory
+{
+    protected $model = ArchivableModel::class;
 
-$factory->state(ArchivableModel::class, 'archived', function () {
-    return [
-        'archived_at' => now()->toDateTimeString(),
-    ];
-});
+    public function definition(): array
+    {
+        return [
+            'archived_at' => null,
+        ];
+    }
+
+    public function archived(): static
+    {
+        return $this->state([
+            'archived_at' => now()->toDateTimeString(),
+        ]);
+    }
+}
