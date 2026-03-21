@@ -37,6 +37,6 @@ class Money implements CastsAttributes
         if (is_null($value)) {
             return $value;
         }
-        return floatval($value) * 100;
+        return (int) round(floatval($value) * 100);
     }
 }

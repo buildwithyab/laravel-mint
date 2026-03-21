@@ -23,7 +23,7 @@ trait Archivable
      */
     public function archive()
     {
-        $this->archived_at = now()->toDateTimeString();
+        $this->archived_at = now();
         $this->save();
 
         return $this;
