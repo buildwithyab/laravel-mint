@@ -3,23 +3,25 @@
 namespace Yab\Mint\Traits;
 
 use Illuminate\Support\Str;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 
 trait Slugify
 {
     public static function bootSlugify()
     {
-        static::creating(function ($model) {
-            if (is_null($model->slug)) {
-                $model->slug = Str::slug($model->{self::getSlugKeyName()});
-            }
-            $model->slug = self::checkModelSlug($model->slug);
-        });
+        static::whenBooted(function () {
+            static::creating(function ($model) {
+                if (is_null($model->slug)) {
+                    $model->slug = Str::slug($model->{static::getSlugKeyName()});
+                }
+                $model->slug = static::checkModelSlug($model->slug);
+            });
 
-        static::updating(function ($model) {
-            if ($model->getOriginal('slug') !== $model->slug) {
-                $model->slug = self::checkModelSlug($model->slug);
-            }
+            static::updating(function ($model) {
+                if ($model->getOriginal('slug') !== $model->slug) {
+                    $model->slug = static::checkModelSlug($model->slug);
+                }
+            });
         });
     }
 
@@ -32,7 +34,7 @@ trait Slugify
      */
     public static function checkModelSlug(string $slug): string
     {
-        if (self::slugExists($slug)) {
+        if (static::slugExists($slug)) {
             return $slug . '-' . uniqid();
         }
         return $slug;
@@ -47,16 +49,16 @@ trait Slugify
      */
     public static function slugExists(string $slug): bool
     {
-        return self::withoutGlobalScopes()->where('slug', $slug)->exists();
+        return static::withoutGlobalScopes()->where('slug', $slug)->exists();
     }
 
     /**
      * Return the model by the slug
      *
-     * @param \Illuminate\Database\Query\Builder $scope
+     * @param \Illuminate\Database\Eloquent\Builder $scope
      * @param string $slug
      *
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeBySlug(Builder $scope, string $slug): Builder
     {

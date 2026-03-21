@@ -2,7 +2,7 @@
 
 namespace Yab\Mint\Actions;
 
-class Inititals
+class Initials
 {
     /**
      * Generate initials from a name

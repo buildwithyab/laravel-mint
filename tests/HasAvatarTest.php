@@ -2,20 +2,21 @@
 
 namespace Yab\Mint\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Yab\Mint\Tests\TestCase;
 use Yab\Mint\Tests\Models\ArchivableModel;
 use Yab\Mint\Tests\Models\HasAvatarModel;
 
 class HasAvatarTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function use_gravatar_if_no_avatar_exists()
     {
         $model = new HasAvatarModel();
         $this->assertStringContainsString('gravatar.com', $model->avatar);
     }
 
-    /** @test */
+    #[Test]
     public function model_can_have_a_avatar_path()
     {
         $model = new HasAvatarModel();

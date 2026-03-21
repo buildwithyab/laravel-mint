@@ -13,7 +13,7 @@ trait Archivable
      */
     public static function bootArchivable()
     {
-        static::addGlobalScope(new ArchivableScope);
+        static::whenBooted(fn () => static::addGlobalScope(new ArchivableScope));
     }
 
     /**
@@ -23,7 +23,7 @@ trait Archivable
      */
     public function archive()
     {
-        $this->archived_at = now()->toDateTimeString();
+        $this->archived_at = now();
         $this->save();
 
         return $this;

@@ -24,7 +24,7 @@ class ArchivableScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->whereNull('archived_at');
+        $builder->whereNull($model->getTable().'.archived_at');
     }
 
     /**

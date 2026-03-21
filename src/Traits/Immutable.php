@@ -13,16 +13,18 @@ trait Immutable
      */
     public static function bootImmutable()
     {
-        static::updating(function ($model) {
-            if ($model->isImmutable()) {
-                throw new ImmutableDataException($model);
-            }
-        });
+        static::whenBooted(function () {
+            static::updating(function ($model) {
+                if ($model->isImmutable()) {
+                    throw new ImmutableDataException($model);
+                }
+            });
 
-        static::deleting(function ($model) {
-            if ($model->isImmutable()) {
-                throw new ImmutableDataException($model);
-            }
+            static::deleting(function ($model) {
+                if ($model->isImmutable()) {
+                    throw new ImmutableDataException($model);
+                }
+            });
         });
     }
 

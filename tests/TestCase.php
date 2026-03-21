@@ -15,8 +15,6 @@ abstract class TestCase extends OrchestraTestCase
     {
         parent::setUp();
 
-        $this->withFactories(__DIR__ . '/Factories');
-
         $this->loadMigrationsFrom(__DIR__ . '/Migrations');
     }
 
