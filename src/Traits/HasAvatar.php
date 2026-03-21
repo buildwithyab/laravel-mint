@@ -45,7 +45,7 @@ trait HasAvatar
     public function getGravatar($size = 128, $d = 'mp', $r = 'g', $atts = []): string
     {
         $url = 'https://www.gravatar.com/avatar/';
-        $url .= hash('sha256', strtolower(trim($this->{$this->getEmailField()})));
+        $url .= md5(strtolower(trim($this->{$this->getEmailField()})));
         $url .= "?s=$size&d=$d&r=$r";
         return $url;
     }
